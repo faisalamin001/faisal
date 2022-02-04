@@ -10697,9 +10697,9 @@ body.template-color-1 {
   transition: 0.3s;
 }
 @media only screen and (max-width: 767px) {
-  .logo a img {
+  /*  .logo a img {
     max-height: 54px;
-  }
+  } */
 }
 
 @media only screen and (max-width: 1199px) {
@@ -10746,7 +10746,6 @@ body.template-color-1 {
 .left-header-style .logo-area a img {
   border-radius: 50%;
   border: 5px solid #32363b;
-  box-shadow: var(--shadow-1);
 }
 .left-header-style #sideNavs .primary-menu {
   display: block;
