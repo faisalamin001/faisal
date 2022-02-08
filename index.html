@@ -1851,7 +1851,7 @@
                     class="rnt-contact-form rwt-dynamic-form row"
                     id="contact-form"
                     method="POST"
-                    action="mail.php"
+                    onsubmit="sendEmail(); reset();"
                   >
                     <div class="col-lg-6">
                       <div class="form-group">
@@ -1861,6 +1861,7 @@
                           name="contact-name"
                           id="contact-name"
                           type="text"
+                          required
                         />
                       </div>
                     </div>
@@ -1884,6 +1885,7 @@
                           class="form-control form-control-sm"
                           id="contact-email"
                           name="contact-email"
+                          required
                           type="email"
                         />
                       </div>
@@ -2135,8 +2137,27 @@
       </div>
       <!-- Back to top end -->
     </main>
-
     <!-- JS ============================================ -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function sendEmail(){
+        Email.send({
+          Host : "smtp.gmail.com",
+          Username : "aminfaisal570@gmail.com",
+          Password : "32155peshawar",
+          To : 'aminfaisal570@gmail.com',
+          From : document.getElementById('contact-email').value,
+          Subject : "From your portfolio" ,
+          Body : "Name : " + document.getElementById('contact-name').value
+          + '<br> Email : ' + document.getElementById('contact-email').value
+          + '<br> Phone : ' + document.getElementById('contact-phone').value
+          + '<br> Subject : ' + document.getElementById('subject').value
+          + '<br> Message : ' + document.getElementById('contact-message').value
+      }).then(
+        message => alert('Message sent succesfully')
+      );
+      }
+    </script>
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/modernizer.min.js"></script>
     <script src="assets/js/vendor/feather.min.js"></script>
