@@ -25,7 +25,15 @@
     <link rel="stylesheet" href="assets/css/plugins/feature.css" />
     <!-- Style css -->
     <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
+  
+  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script type="text/javascript">
+        (function() {
+        emailjs.init("user_kWF8dg3jm1m9Ut9u1SSWa");
+        })();
+        </script></head>
 
   <body
     class="white-version home-sticky spybody"
@@ -1851,7 +1859,7 @@
                     class="rnt-contact-form rwt-dynamic-form row"
                     id="contact-form"
                     method="POST"
-                    onsubmit="sendEmail(); reset();"
+                    onsubmit="sendMail()"
                   >
                     <div class="col-lg-6">
                       <div class="form-group">
@@ -1921,6 +1929,7 @@
                         type="submit"
                         id="submit"
                         class="rn-btn"
+                        
                       >
                         <span>SEND MESSAGE</span>
                         <i data-feather="arrow-right"></i>
@@ -2138,24 +2147,18 @@
       <!-- Back to top end -->
     </main>
     <!-- JS ============================================ -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script>
-      function sendEmail(){
-        Email.send({
-          SecureToken : "48371481-c3fe-4548-9003-a15164a39dac",
-          To : 'aminfaisal570@gmail.com',
-          From : document.getElementById('contact-email').value,
-          Subject : "From your portfolio" ,
-          Body : "Name : " + document.getElementById('contact-name').value
-          + '<br> Email : ' + document.getElementById('contact-email').value
-          + '<br> Phone : ' + document.getElementById('contact-phone').value
-          + '<br> Subject : ' + document.getElementById('subject').value
-          + '<br> Message : ' + document.getElementById('contact-message').value
-      }).then(
-        message => alert('Message sent succesfully')
-      );
-      }
-    </script>
+    
+        <script>
+          function sendMail(params) {
+            var tempParams = {
+            from_name: document.getElementById("contact-name").value,
+            to_name: 'Faisal',
+            message: document.getElementById("contact-message").value,
+            }
+            emailjs.send('gmail','template_lrw5wao',tempParams);
+          }
+    
+        </script>
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/modernizer.min.js"></script>
     <script src="assets/js/vendor/feather.min.js"></script>
